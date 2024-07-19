@@ -44,20 +44,25 @@ class _HomeState extends State<Home> {
         children: [
           Container(
             margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(40),
             height: 200,
             decoration: BoxDecoration(
               color: accent,
               borderRadius: BorderRadius.circular(20),
             ),
             child: const Center(
-              child: Text(
-                '0', // Placeholder for display
-                style: TextStyle(fontSize: 32, color: Colors.white),
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: Text(
+                  '0',
+                  style: TextStyle(fontSize: 48, color: Colors.white),
+                ),
               ),
             ),
           ),
           Expanded(
             child: Container(
+              alignment: Alignment.bottomRight,
               padding: EdgeInsets.all(20),
               child: GridView.builder(
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
