@@ -1,3 +1,4 @@
+import 'package:calc/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -31,6 +32,10 @@ class _HomeState extends State<Home> {
     '+',
   ];
 
+  void onButtonPressed(String label) {
+    print('Button pressed: $label');
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +49,7 @@ class _HomeState extends State<Home> {
               color: accent,
               borderRadius: BorderRadius.circular(20),
             ),
-            child: Center(
+            child: const Center(
               child: Text(
                 '0', // Placeholder for display
                 style: TextStyle(fontSize: 32, color: Colors.white),
@@ -52,28 +57,25 @@ class _HomeState extends State<Home> {
             ),
           ),
           Expanded(
-            child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 4, crossAxisSpacing: 4, mainAxisSpacing: 4),
-                itemCount: buttonLabels.length,
-                itemBuilder: (context, index) {
-                  return ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: accent),
-                      onPressed: null,
-                      child: Text(
-                        buttonLabels[index],
-                        style: TextStyle(color: Colors.white),
-                      ));
-                }),
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: GridView.builder(
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10),
+                  itemCount: buttonLabels.length,
+                  itemBuilder: (context, index) {
+                    return (CustomButton(
+                      label: buttonLabels[index],
+                      color: accent,
+                      onPressed: () => onButtonPressed(buttonLabels[index]),
+                    ));
+                  }),
+            ),
           ),
         ],
       ),
     );
-  }
-
-  // Method to handle button press (implement your logic here)
-  void onButtonPressed(String label) {
-    // Placeholder: Print the button label for demonstration
-    print('Button pressed: $label');
   }
 }
