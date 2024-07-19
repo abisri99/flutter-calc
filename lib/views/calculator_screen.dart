@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
           Container(
             margin: EdgeInsets.all(20),
             padding: EdgeInsets.all(40),
-            height: 200,
+            height: 180,
             decoration: BoxDecoration(
               color: accent,
               borderRadius: BorderRadius.circular(20),
@@ -55,7 +55,7 @@ class _HomeState extends State<Home> {
                 alignment: Alignment.bottomRight,
                 child: Text(
                   '0',
-                  style: TextStyle(fontSize: 48, color: Colors.white),
+                  style: TextStyle(fontSize: 50, color: Colors.white),
                 ),
               ),
             ),
