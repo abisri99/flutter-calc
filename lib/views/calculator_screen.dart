@@ -42,41 +42,47 @@ class _HomeState extends State<Home> {
       backgroundColor: bg,
       body: Column(
         children: [
-          Container(
-            margin: EdgeInsets.all(20),
-            padding: EdgeInsets.all(40),
-            height: 180,
-            decoration: BoxDecoration(
-              color: accent,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: const Center(
-              child: Align(
-                alignment: Alignment.bottomRight,
-                child: Text(
-                  '0',
-                  style: TextStyle(fontSize: 50, color: Colors.white),
+          // Expanded widget to make the container take up remaining space
+          Expanded(
+            child: Container(
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(40),
+              decoration: BoxDecoration(
+                color: accent,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: const Center(
+                child: Align(
+                  alignment: Alignment.bottomRight,
+                  child: Text(
+                    '0',
+                    style: TextStyle(fontSize: 50, color: Colors.white),
+                  ),
                 ),
               ),
             ),
           ),
-          Expanded(
+          // Align widget to position the button grid at the bottom
+          Align(
+            alignment: Alignment.bottomCenter,
             child: Container(
-              alignment: Alignment.bottomRight,
               padding: EdgeInsets.all(20),
               child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10),
-                  itemCount: buttonLabels.length,
-                  itemBuilder: (context, index) {
-                    return (CustomButton(
-                      label: buttonLabels[index],
-                      color: accent,
-                      onPressed: () => onButtonPressed(buttonLabels[index]),
-                    ));
-                  }),
+                shrinkWrap: true,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                ),
+                itemCount: buttonLabels.length,
+                itemBuilder: (context, index) {
+                  return CustomButton(
+                    label: buttonLabels[index],
+                    color: accent,
+                    onPressed: () => onButtonPressed(buttonLabels[index]),
+                  );
+                },
+              ),
             ),
           ),
         ],
