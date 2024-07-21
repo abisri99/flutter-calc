@@ -1,3 +1,4 @@
+import 'package:calc/models/calculator_model.dart';
 import 'package:calc/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,8 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Color bg = Color(0xff1a1a1a);
   Color accent = Color(0xff323232);
+  String currentOutput = "0";
+  CalculatorModel calculatorModel = CalculatorModel();
 
   // List of button labels for the calculator
   List<String> buttonLabels = [
@@ -33,7 +36,22 @@ class _HomeState extends State<Home> {
   ];
 
   void onButtonPressed(String label) {
-    print('Button pressed: $label');
+    setState(() {
+      if (label == "C") {
+        currentOutput = "0";
+      } else if (label == '=') {
+        try {
+          currentOutput =
+              calculatorModel.evaluateExpression(currentOutput).toString();
+        } catch (e) {
+          currentOutput = "Error";
+        }
+      } else if (currentOutput == "0") {
+        currentOutput = label;
+      } else {
+        currentOutput += label;
+      }
+    });
   }
 
   @override
@@ -51,11 +69,11 @@ class _HomeState extends State<Home> {
                 color: accent,
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: const Center(
+              child: Center(
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: Text(
-                    '0',
+                    currentOutput,
                     style: TextStyle(fontSize: 50, color: Colors.white),
                   ),
                 ),
