@@ -13,7 +13,6 @@ class _HomeState extends State<Home> {
   Color bg = Color(0xff1a1a1a);
   Color accent = Color(0xff323232);
   String currentOutput = "0";
-  CalculatorModel calculatorModel = CalculatorModel();
 
   // List of button labels for the calculator
   List<String> buttonLabels = [
@@ -34,25 +33,6 @@ class _HomeState extends State<Home> {
     '=',
     '+',
   ];
-
-  void onButtonPressed(String label) {
-    setState(() {
-      if (label == "C") {
-        currentOutput = "0";
-      } else if (label == '=') {
-        try {
-          currentOutput =
-              calculatorModel.evaluateExpression(currentOutput).toString();
-        } catch (e) {
-          currentOutput = "Error";
-        }
-      } else if (currentOutput == "0") {
-        currentOutput = label;
-      } else {
-        currentOutput += label;
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
