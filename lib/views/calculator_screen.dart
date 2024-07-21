@@ -12,7 +12,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Color bg = Color(0xff1a1a1a);
   Color accent = Color(0xff323232);
-  String currentOutput = "0";
   final CalculatorController _calculatorController = CalculatorController();
 
   // List of button labels for the calculator
@@ -60,7 +59,7 @@ class _HomeState extends State<Home> {
                 child: Align(
                   alignment: Alignment.bottomRight,
                   child: Text(
-                    currentOutput,
+                    _calculatorController.currentExpression,
                     style: TextStyle(fontSize: 50, color: Colors.white),
                   ),
                 ),
