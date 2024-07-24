@@ -3,15 +3,15 @@ import 'package:calc/controllers/calculator_controller.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
-  Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
-  _HomeState createState() => _HomeState();
+  HomeState createState() => HomeState();
 }
 
-class _HomeState extends State<Home> {
-  Color bg = Color(0xff1a1a1a);
-  Color accent = Color(0xff323232);
+class HomeState extends State<Home> {
+  Color bg = const Color(0xff1a1a1a);
+  Color accent = const Color(0xff323232);
   final CalculatorController _calculatorController = CalculatorController();
 
   // List of button labels for the calculator
@@ -49,8 +49,8 @@ class _HomeState extends State<Home> {
           // Expanded widget to make the container take up remaining space
           Expanded(
             child: Container(
-              margin: EdgeInsets.all(20),
-              padding: EdgeInsets.all(40),
+              margin: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(40),
               decoration: BoxDecoration(
                 color: accent,
                 borderRadius: BorderRadius.circular(20),
@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                   alignment: Alignment.bottomRight,
                   child: Text(
                     _calculatorController.currentExpression,
-                    style: TextStyle(fontSize: 50, color: Colors.white),
+                    style: const TextStyle(fontSize: 50, color: Colors.white),
                   ),
                 ),
               ),
@@ -70,7 +70,7 @@ class _HomeState extends State<Home> {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: GridView.builder(
                 shrinkWrap: true,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

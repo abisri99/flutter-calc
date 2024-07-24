@@ -7,7 +7,12 @@ class CalculatorController {
 
   void onButtonPressed(String label) {
     if (label == 'C') {
-      currentExpression = '0';
+      if (currentExpression.length == 1 || label.isEmpty){
+        currentExpression = '0';
+      }
+      else if (currentExpression.isNotEmpty) {
+       currentExpression = currentExpression.substring(0, currentExpression.length -1);
+      }
     } else if (label == '=') {
       try {
         currentExpression =
